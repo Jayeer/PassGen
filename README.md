@@ -4,6 +4,7 @@
 
 ```
 git clone git@github.com:Jayeer/PassGen.git
+cd PassGen
 python3 setup.py
 ```
 
