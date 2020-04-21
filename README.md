@@ -2,7 +2,10 @@
 
 ### Installation
 
-```git clone git@github.com:Jayeer/PassGen.git```
+```
+git clone git@github.com:Jayeer/PassGen.git
+python3 setup.py
+```
 
 ### Usage
 
