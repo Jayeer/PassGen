@@ -1,9 +1,9 @@
-##Simple password generator written on python with itertools.
+## Simple password generator written on python with itertools.
 
-###Installation
+### Installation
 
 ```git clone git@github.com:Jayeer/PassGen.git```
 
-###Usage
+### Usage
 
 ```python3 main.py```
