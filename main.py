@@ -1,13 +1,15 @@
 import itertools
+import os
 
 
 def main():
-    logo = """
-     _     ___   ____  ___  
-    | |   / _ \ / ___|/ _ \ 
-    | |  | | | | |  _| | | |
-    | |__| |_| | |_| | |_| |
-    |_____\___/ \____|\___/ """
+    logo = r"""
+     ____                ____            
+    |  _ \ __ _ ___ ___ / ___| ___ _ __  
+    | |_) / _` / __/ __| |  _ / _ \ '_ \ 
+    |  __/ (_| \__ \__ \ |_| |  __/ | | |
+    |_|   \__,_|___/___/\____|\___|_| |_|
+    """
     user_input = "!"
     keywords = []
     print(logo)
@@ -48,15 +50,15 @@ def main():
         print("Default")
 
 
-    count_of_combinations = len(keywords) ** max_keywords
+    if not os.path.exists("dictionaries"):
+        os.mkdir("dictionaries")
+        
 
-    print(str(count_of_combinations) + " passwords will be generated")
-
-    outputFile = open(outFilename, "w")
-
-    for combination in itertools.combinations(keywords, max_keywords):
-        outputFile.write("".join(combination))
-        outputFile.write("\n")
+    outputFile = open(os.path.join("dictionaries", outFilename), "w")
+    for count_of_keywords in range(1, max_keywords):
+        for combination in itertools.combinations(keywords, count_of_keywords):
+            outputFile.write("".join(combination))
+            outputFile.write("\n")
 
     outputFile.close()
 
