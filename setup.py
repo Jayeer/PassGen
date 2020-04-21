@@ -9,6 +9,8 @@ def copy_to_share():
 	for file in os.listdir("."):
 		if (file in ignore):
 			continue
+		if (os.path.isdir(file)):
+			continue
 		local_file = open(file, "r")
 		global_file = open(os.path.join("/usr/share/passgen", file), "w")
 		global_file.write(local_file.read())
@@ -17,8 +19,10 @@ def copy_to_share():
 
 def create_link():
 	fd = open("/usr/bin/passgen", "w")
-	fd.write("#! /usr/bin/bash")
+	fd.write("#! /usr/bin/bash\n")
 	fd.write("cd /usr/share/passgen && python3 main.py")
+	fd.close()
+	os.chmod("/usr/bin/passgen", 0o755)
 
 
 def main():
@@ -29,7 +33,7 @@ def main():
 	print("Creating link in /usr/bin")
 	create_link()
 	print("Created")
-	print("Enstallation finished")
+	print("Installation finished")
 
 
 if __name__ == "__main__":
